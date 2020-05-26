@@ -6,7 +6,7 @@ pipeline{
                 script{
                     echo "Getting the commit hashes"
                     sh "curr_dir=`pwd`"  
-                    sh "cd ${env.WORKSPACE}"
+                    sh "cd ${env.WORKSPACE}/wtaer"
                 }      
             }
         }
