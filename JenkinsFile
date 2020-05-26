@@ -6,8 +6,15 @@ pipeline{
                 script{
                     echo "Getting the commit hashes"
                     sh "curr_dir=`pwd`"     
-                    sh "curr_dir=`pwd`" 
                 }      
+            }
+        }
+        stage('Example'){
+            when(equals expected : true ,actual :currentBuild.currentResult){
+                echo "hello"
+            }
+            steps{
+                echo "world"
             }
         }
     }
