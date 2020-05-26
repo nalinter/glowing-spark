@@ -10,8 +10,8 @@ pipeline{
             }
         }
         stage('Example'){
-            when(equals expected : true ,actual :currentBuild.currentResult){
-                echo "hello"
+            when{
+                equals expected : true ,actual :currentBuild.currentResult
             }
             steps{
                 echo "world"
