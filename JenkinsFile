@@ -5,13 +5,14 @@ pipeline{
             steps{
                 script{
                     echo "Getting the commit hashes"
-                    sh "curr_dir=`pwd`"     
+                    sh "curr_dir=`pwd`"  
+                    sh "cd ${env.WORKSPACE}"
                 }      
             }
         }
         stage('Example'){
             when{
-                equals expected : "SUCCESS" ,actual :currentBuild.currentResult
+                equals expected : "FAILURE" ,actual :currentBuild.currentResult
             }
             steps{
                 echo "world"
