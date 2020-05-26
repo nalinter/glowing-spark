@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    stages{
+        stage('Github Repo'){
+            steps{
+                git branch: 'develop', credentialsId: '7cf8f585-2bca-4f56-bbd0-913f2666d6c6', url: 'git@github.com:ps-dev-ibm-cloud/Mango.git'
+            }
+        }
+        stage('Code - Quality'){
+            environment{
+                #PATH = "/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/devin/.local/bin:/home/devin/bin"
+                #NODE_PATH = "/usr/local/bin/node"
+                pr_tester_workspace= "${env.WORKSPACE}"
+                workspace = "${env.WORKSPACE}"
+                curr_dir = ""
+            }
+            steps{
+                script{
+                    sh "export PATH"
+                    sh "export NODE_PATH"
+                    echo "Getting the commit hashes"
+                    sh "curr_dir=`pwd`"
+                    sh "cd ${env.pr_tester_workspace}/sugarcrm"      
+                    sh "curr_dir=`pwd`" 
+                }      
+            }
+        }
+    }
+}
+
+
+
