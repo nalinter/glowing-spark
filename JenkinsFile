@@ -12,7 +12,7 @@ pipeline{
         }
         stage('Example'){
             when{
-                equals expected : "FAILURE" ,actual :currentBuild.currentResult
+                equals expected : "FAILURE" ,actual :currentBuild.result
             }
             steps{
                 echo "world"
