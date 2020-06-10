@@ -1,23 +1,14 @@
 pipeline{
     agent any
+        triggers {
+            issueCommentTrigger('.*test this please.*')
+        }   
     stages{
         stage('Code - Quality'){
             steps{
-                script{
-                    echo "Getting the commit hashes"
-                    sh "curr_dir=`pwd`"  
-                    sh "cd ${env.WORKSPACE}/wtaer"
-                }      
+                echo "madhav"
             }
-        }
-        stage('Example'){
-            when{
-                equals expected : "FAILURE" ,actual :currentBuild.result
-            }
-            steps{
-                echo "world"
-            }
-        }
+        }    
     }
 }
 
