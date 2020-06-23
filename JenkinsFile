@@ -6,5 +6,11 @@ steps{
 input message: 'Continue', ok: 'APPROVED', parameters: [string(defaultValue: 'hello', description: '', name: 'ji', trim: false)], submitter: 'nalinter@in.ibm.com', submitterParameter: 'hello'
 }
 }
+stage('request')
+{
+steps{
+echo "zacccepted"
+}
+}
 }
 }
