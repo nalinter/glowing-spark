@@ -1,6 +1,9 @@
 pipeline{
 agent none
 stages{
+    environment{
+    pr_number = "2019"
+    }
     stage('hello'){
         steps{
                 input id: 'APPROVAL', message: 'DEPLOY PACKAGE TO SBX - APPROVAL', ok: 'APPROVE', submitter: 'nalinter@in.ibm.com'
@@ -17,7 +20,7 @@ stages{
                     sh 'pwd'
                     dir('/root/Desktop/Atlastesting/integration/Atlas/') {
                             sh 'mvn test -DsuiteXmlFile=SmokeTest.xml'
-
+                            sh ' mv /root/Desktop/Atlastesting/integration/Atlas/reports/*.html /root/Desktop/Atlastesting/test_results/integration/$pr_number.html'
                         }
                 }
                 publishHTML([
