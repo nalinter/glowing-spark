@@ -15,6 +15,7 @@ stages{
             }
             steps{
                 wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+                    pwd()
                     sh 'mvn test -DsuiteXmlFile=SmokeTest.xml'
                 }
                 publishHTML([
