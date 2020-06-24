@@ -3,7 +3,7 @@ agent any
 stages{
 stage('hello'){
 steps{
-input message: 'Continue', ok: 'APPROVED', parameters: [string(defaultValue: 'hello', description: '', name: 'ji', trim: false)], submitter: 'nalinter@in.ibm.com', submitterParameter: 'hello'
+input message: 'Continue', ok: 'APPROVED', parameters: [string(defaultValue: 'hello', description: '', name: 'ji', trim: false)], submitter: 'nbadrin1@in.ibm.com', submitterParameter: 'hello'
 }
 }
 stage('request')
