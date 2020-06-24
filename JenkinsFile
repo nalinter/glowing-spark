@@ -1,13 +1,13 @@
 pipeline{
-agent any
+
 stages{
-stage('hello'){
-steps{
-input id: 'APPROVAL', message: 'DEPLOY PACKAGE TO SBX - APPROVAL', ok: 'APPROVE', submitter: 'nalinter@in.ibm.com'
-}
-}
-stage('Regression-Suite PRE-SBX'){
-            agent{
+    stage('hello'){
+        steps{
+                input id: 'APPROVAL', message: 'DEPLOY PACKAGE TO SBX - APPROVAL', ok: 'APPROVE', submitter: 'nalinter@in.ibm.com'
+        }
+    }   
+    stage('Regression-Suite PRE-SBX'){
+        agent{
                 label 'atlasdevops'
                 customWorkspace '/root/Desktop/Atlastesting/integration/Atlas'
             }
