@@ -3,7 +3,9 @@ agent any
 stages{
 stage('hello'){
 steps{
-input id: 'APPROVAL', message: 'DEPLOY PACKAGE TO SBX - APPROVAL', ok: 'APPROVE', submitter: 'nalinter@in.ibm.com'}
+input id: 'APPROVAL', message: 'DEPLOY PACKAGE TO SBX - APPROVAL', ok: 'APPROVE', submitter: 'nalinter@in.ibm.com', submitterParameter: 'approver'
+echo "approved by : $approver"
+}
 }
 stage('request')
 {
