@@ -10,13 +10,12 @@ stages{
         agent{
                 node{
                 label 'atlasdevops'
-                customWorkspace '/root/Desktop/Atlastesting/integration/Atlas'
                 }
             }
             steps{
                 wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
                     sh 'pwd'
-                    sh 'mvn test -DsuiteXmlFile=SmokeTest.xml'
+                    sh '/root/Desktop/Atlastesting/integration/Atlas/mvn test -DsuiteXmlFile=SmokeTest.xml'
                 }
                 publishHTML([
                     allowMissing: false, 
