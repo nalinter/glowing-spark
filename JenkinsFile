@@ -6,11 +6,27 @@ steps{
 input id: 'APPROVAL', message: 'DEPLOY PACKAGE TO SBX - APPROVAL', ok: 'APPROVE', submitter: 'nalinter@in.ibm.com'
 }
 }
-stage('request')
-{
-steps{
-echo "zacccepted"
-}
-}
+stage('Regression-Suite PRE-SBX'){
+            agent{
+                label 'atlasdevops'
+                customWorkspace '/root/Desktop/Atlastesting/integration/Atlas'
+            }
+            steps{
+                wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+                    sh 'mvn test -DsuiteXmlFile=SmokeTest.xml'
+                }
+                publishHTML([
+                    allowMissing: false, 
+                    alwaysLinkToLastBuild: false, 
+                    escapeUnderscores: false, 
+                    includes: '**/*.html',
+                    keepAll: false, 
+                    reportDir: '/root/Desktop/Atlastesting/Integration/Atlas/reports/', 
+                    reportFiles: '*.html', 
+                    reportName: 'PRE_SBX_Report', 
+                    reportTitles: ''])
+            }
+   
+        }
 }
 }
