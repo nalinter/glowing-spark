@@ -15,7 +15,10 @@ stages{
             steps{
                 wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
                     sh 'pwd'
-                    sh '/root/Desktop/Atlastesting/integration/Atlas/mvn test -DsuiteXmlFile=SmokeTest.xml'
+                    dir('/root/Desktop/Atlastesting/integration/Atlas/') {
+                            sh 'mvn test -DsuiteXmlFile=SmokeTest.xml'
+
+                        }
                 }
                 publishHTML([
                     allowMissing: false, 
