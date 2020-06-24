@@ -8,8 +8,10 @@ stages{
     }   
     stage('Regression-Suite PRE-SBX'){
         agent{
+                node{
                 label 'atlasdevops'
                 customWorkspace '/root/Desktop/Atlastesting/integration/Atlas'
+                }
             }
             steps{
                 wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
