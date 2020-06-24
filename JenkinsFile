@@ -3,7 +3,7 @@ agent any
 stages{
 stage('hello'){
 steps{
-input id: 'APPROVAL', message: 'DEPLOY PACKAGE TO SBX - APPROVAL', ok: 'APPROVE', parameters: [string(defaultValue: '', description: '', name: 'who approved?', trim: false)], submitter: 'nalinter@in.ibm.com', submitterParameter: 'approver'}
+input id: 'APPROVAL', message: 'DEPLOY PACKAGE TO SBX - APPROVAL', ok: 'APPROVE', submitter: 'nalinter@in.ibm.com'}
 }
 stage('request')
 {
