@@ -13,7 +13,7 @@ stages{
                 environment_name = "integration"
             }
             steps{
-                sh "sh scripts/package_deployment.sh $environment_name $pr_number"
+                sh "sh shellscript/package_deployment.sh $environment_name $pr_number"
             }
         }
         stage('Regression-Suite PRE-SBX'){
