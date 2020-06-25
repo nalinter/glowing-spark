@@ -43,10 +43,10 @@ stages{
             }
             post{
                 success{
-                        slackSend channel: 'atlas-devops-2020', color: '#BADA55', message: "Regression-Suite on PRE_SBX SUCCESSFUL PRNUMBER:$pr_number Report: ${JOB_URL}PRE_SBX_Report", teamDomain: 'ibm-crmplatforms', tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
+                        slackSend channel: 'atlas-devops-2020', color: '#BADA55', message: "Regression-Suite on PRE_SBX *SUCCESSFUL*\n PRNUMBER:$pr_number \nReport: ${JOB_URL}PRE_SBX_Report", teamDomain: 'ibm-crmplatforms', tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
                 }
                 failure{
-                        slackSend channel: 'atlas-devops-2020', color: '#D33834', message: "Regression-Suite on PRE_SBX FAILURE PRNUMBER:$pr_number Report: ${JOB_URL}PRE_SBX_Report", teamDomain: 'ibm-crmplatforms', tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
+                        slackSend channel: 'atlas-devops-2020', color: '#D33834', message: "Regression-Suite on PRE_SBX *FAILURE* \n PRNUMBER:$pr_number \n Report: ${JOB_URL}PRE_SBX_Report", teamDomain: 'ibm-crmplatforms', tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
                 }
             }
         }
