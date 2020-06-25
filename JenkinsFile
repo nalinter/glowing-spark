@@ -1,5 +1,9 @@
 pipeline{
-agent none
+agent {
+    node{
+        label 'master'
+      }
+}
 environment{
     pr_number = "2386"
     }
