@@ -1,16 +1,50 @@
 pipeline{
 agent none
 environment{
-    pr_number = "2019"
+    pr_number = "2386"
     }
 stages{
-    
-    stage('hello'){
-        steps{
-                input id: 'APPROVAL', message: 'DEPLOY PACKAGE TO SBX - APPROVAL', ok: 'APPROVE', submitter: 'nalinter@in.ibm.com'
-                echo "${JOB_URL}"
+    stage('Package Deployment to PRE-SBX'){
+            environment{
+                environment_name = "integration"
+            }
+            steps{
+                sh "sh scripts/package_deployment.sh $environment_name $pr_number"
+            }
         }
-    }   
-    
+        stage('Regression-Suite PRE-SBX'){
+        agent{
+                node{
+                label 'atlasdevops'
+                }
+            }
+            steps{
+                wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+                    sh 'pwd'
+                    dir('/root/Desktop/Atlastesting/integration/Atlas/') {
+                            sh 'mvn test -DsuiteXmlFile=SmokeTest.xml'
+                            sh 'mv /root/Desktop/Atlastesting/integration/Atlas/reports/*.html /root/Desktop/Atlastesting/test_results/integration/$pr_number.html'
+                        }
+                }
+                publishHTML([
+                    allowMissing: false, 
+                    alwaysLinkToLastBuild: false, 
+                    escapeUnderscores: false, 
+                    includes: '**/*.html',
+                    keepAll: false, 
+                    reportDir: '/root/Desktop/Atlastesting/test_results/integration/*.html', 
+                    reportFiles: '*.html', 
+                    reportName: 'PRE_SBX_Report', 
+                    reportTitles: ''])
+            }
+            post{
+                success{
+                        slackSend channel: 'atlas-devops-2020', color: '#BADA55', message: "Regression-Suite on PRE_SBX SUCCESSFUL PRNUMBER:$pr_number Report: ${JOB_URL}/PRE_SBX_Report", teamDomain: 'ibm-crmplatforms', tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
+                }
+                failure{
+                        slackSend channel: 'atlas-devops-2020', color: '#D33834', message: "Regression-Suite on PRE_SBX FAILURE PRNUMBER:$pr_number Report: ${JOB_URL}/PRE_SBX_Report", teamDomain: 'ibm-crmplatforms', tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
+                }
+            }
+        }
 }
 }
