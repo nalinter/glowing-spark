@@ -36,7 +36,7 @@ stages{
                     escapeUnderscores: false, 
                     includes: '**/*.html',
                     keepAll: false, 
-                    reportDir: '/root/Desktop/Atlastesting/test_results/integration/$pr_number.html', 
+                    reportDir: '/root/Desktop/Atlastesting/test_results/integration/', 
                     reportFiles: '*.html', 
                     reportName: 'PRE_SBX_Report', 
                     reportTitles: ''])
