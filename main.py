@@ -10,7 +10,7 @@ if __name__ == '__main__':
     pr_number = sys.argv[1]
     pr_package_name = "module_" + pr_number + "_modules_1.zip"
     console_output = sys.argv[2] + "console"
-    job_url = "http://ddywdcdevin01.sl.bluecloud.ibm.com:8080/job/sample-pipeline/PRE-SBX_Report"
+    job_url = "http://ddywdcdevin01.sl.bluecloud.ibm.com:8080/job/pipeline-testing-CI/PRE-SBX_Report"
     data = {
         "channel": "sbx-aproval",
         "blocks": [
@@ -106,7 +106,7 @@ if __name__ == '__main__':
             #     ]
             # }
         ],
-        'username': 'HAL9000',
+        'username': 'APPROVAL',
         'icon_emoji': ':robot_face:'
     }
 
