@@ -18,7 +18,7 @@ if __name__ == '__main__':
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "Hi @sanojkvalappil @srutnair :wave: please ignore this message"
+                    "text": "sample message please ignore"
                 }
             },
             {
