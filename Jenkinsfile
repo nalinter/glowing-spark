@@ -2,8 +2,9 @@ pipeline{
   agent any
     environment{
       pr_number = "2490"   
-	   	github_url = "https://github.com/ps-dev-ibm-cloud/Mango/pull"
-	   	smoke_test_report = "http://ddywdcdevin01.sl.bluecloud.ibm.com:8080/job/pipeline-testing-CI/PRE-SBX_Report/"
+      github_url = "https://github.com/ps-dev-ibm-cloud/Mango/pull"
+      smoke_test_report = "http://ddywdcdevin01.sl.bluecloud.ibm.com:8080/job/pipeline-testing-CI/PRE-SBX_Report/"
+      package_neme = "module_" + "2490" + "_modules_1.zip"	    
     }
     stages{
         stage('slack-send'){
