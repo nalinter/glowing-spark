@@ -5,7 +5,7 @@ import requests
 
 if __name__ == '__main__':
 
-    webhook_url = 'https://hooks.slack.com/services/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'
+    webhook_url = 'https://hooks.slack.com/services/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'
 
     pr_number = sys.argv[1]
     pr_package_name = "module_" + pr_number + "_modules_1.zip"
