@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('slack-send'){
             steps{
-                slackSend channel: 'sbx-aproval', color: '#A9A9A9', message: "Environment: *PRE_SBX* \n PR-NUMBER: *$pr_number* \n GitHub-PR: $github_url/$pr_number \n PR-Package-Name: *$package_name* \n Deployment-Pre-SBX: *SUCCESSFUL* \n SmokeTest: *SUCCESSFUL* \n Smoke-Test-Report: $smoke_test_report \n Click the below URL to go ahead and deploy package to SBX Environment: \n hello", teamDomain: 'ibm-crmplatforms', tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
+                slackSend channel: 'sbx-aproval', message: "Environment: *PRE_SBX* \n PR-NUMBER: *$pr_number* \n GitHub-PR: $github_url/$pr_number \n PR-Package-Name: *$package_name* \n Deployment-Pre-SBX: *SUCCESSFUL* \n SmokeTest: *SUCCESSFUL* \n Smoke-Test-Report: $smoke_test_report \n Click the below URL to go ahead and deploy package to SBX Environment: \n hello", teamDomain: 'ibm-crmplatforms', tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
             }
         }
     }
