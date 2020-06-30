@@ -69,13 +69,6 @@ if __name__ == '__main__':
                     "type": "mrkdwn",
                     "text": "Click the below Button to go ahead and deploy package to SBX Environment"
                 }
-            },
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "URL:" + console_output
-                }
             }
             # {
             #     "type": "section",
