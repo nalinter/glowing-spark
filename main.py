@@ -5,14 +5,14 @@ import requests
 
 if __name__ == '__main__':
 
-    webhook_url = 'https://hooks.slack.com/services/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'
+    webhook_url = 'https://hooks.slack.com/services/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'
 
     pr_number = sys.argv[1]
     pr_package_name = "module_" + pr_number + "_modules_1.zip"
     console_output = sys.argv[2] + "console"
     job_url = "http://ddywdcdevin01.sl.bluecloud.ibm.com:8080/job/pipeline-testing-CI/PRE-SBX_Report"
     data = {
-        "channel": "#random",
+        "channel": "#madhav-slack-test",
         "blocks": [
             {
                 "type": "section",
