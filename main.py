@@ -12,7 +12,7 @@ if __name__ == '__main__':
     console_output = sys.argv[2] + "console"
     job_url = "http://ddywdcdevin01.sl.bluecloud.ibm.com:8080/job/pipeline-testing-CI/PRE-SBX_Report"
     data = {
-        "channel": "random",
+        "channel": "#random",
         "blocks": [
             {
                 "type": "section",
