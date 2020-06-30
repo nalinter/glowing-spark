@@ -5,14 +5,14 @@ import requests
 
 if __name__ == '__main__':
 
-    webhook_url = 'https://hooks.slack.com/services/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'
+    webhook_url = 'https://hooks.slack.com/services/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'
 
     pr_number = sys.argv[1]
     pr_package_name = "module_" + pr_number + "_modules_1.zip"
     console_output = sys.argv[2] + "console"
     job_url = "http://ddywdcdevin01.sl.bluecloud.ibm.com:8080/job/pipeline-testing-CI/PRE-SBX_Report"
     data = {
-        "channel": "sbx-aproval",
+        "channel": "random",
         "blocks": [
             {
                 "type": "section",
