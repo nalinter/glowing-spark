@@ -1,7 +1,12 @@
 @NonCPS
-def commitinformation(currentbuild){
-	def logset = currentbuild.changeSets
-	echo "${logset}"
+def cancelbuilds(){
+	def jobName = env.JOB_NAME
+	echo "${jobName}"
+    def buildNumber = env.BUILD_NUMBER.toInteger()
+	echo "${buildNumber}"
+    def currentJob = Jenkins.instance.getItemByFullName(jobName)
+	echo "${currentJob}"
+
 }
 
 
@@ -11,7 +16,7 @@ pipeline{
   stages{
     stage("sample"){
       steps{
-        commitinformation(currentBuild)
+        cancelbuilds()
       }
     }
   }
