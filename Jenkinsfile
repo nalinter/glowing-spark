@@ -23,7 +23,7 @@ pipeline{
 	      	      def author = json.get(0)
 		      def sample = author.get(0)
 		     // def userid = json.get('userId')
-		      echo "author : ${sample}"
+		      echo "author : ${author}"
 		     // echo "userid : ${userid}"
 	      }
       }
