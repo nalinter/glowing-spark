@@ -17,7 +17,7 @@ pipeline{
     stage("sample"){
       steps{
 	      script{
-		      def json = currentBuild.getBuildCauses
+		      def json = currentBuild.getBuildCauses()
 	      echo "${json}"
 	      }
       }
