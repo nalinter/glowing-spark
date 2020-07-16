@@ -16,7 +16,9 @@ pipeline{
   stages{
     stage("sample"){
       steps{
-        cancelbuilds()
+        //cancelbuilds()
+	      def json = currentBuild.getBuildCauses
+	      echo "${json}"
       }
     }
   }
