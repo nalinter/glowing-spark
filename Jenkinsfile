@@ -21,7 +21,7 @@ pipeline{
 		      def type = json.getClass()
 		      echo "${type}"
 	      	      def author = json.get(0)
-		      def sample = author.get(3)
+		      def sample = author.getClass()
 		     // def userid = json.get('userId')
 		      echo "author : ${sample}"
 		     // echo "userid : ${userid}"
