@@ -1,4 +1,4 @@
-@NonCPS
+
 def cancelbuilds(){
 	def jobName = env.JOB_NAME
 	echo "${jobName}"
