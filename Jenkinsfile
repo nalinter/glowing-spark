@@ -20,10 +20,10 @@ pipeline{
 		      def json = currentBuild.getBuildCauses()
 		      def type = json.getClass()
 		      echo "${type}"
-	      	     // def author = json['userName']
-		     // def userid = json['userId']
-		     // echo "author : ${author}"
-		     // echo "userid : ${userid}"
+	      	      def author = json.get(3)
+		      def userid = json.get(4)
+		      echo "author : ${author}"
+		      echo "userid : ${userid}"
 	      }
       }
     }
