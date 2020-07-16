@@ -11,5 +11,10 @@ pipeline{
         }
       }
     }
+    stage("sample-2"){
+      steps{
+        echo "sample2"
+      }
+    }
   }
 }
