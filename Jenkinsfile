@@ -18,7 +18,10 @@ pipeline{
       steps{
 	      script{
 		      def json = currentBuild.getBuildCauses()
-	      echo "${json}"
+	      	      def author = json['userName']
+		      def userid = json['userId']
+		      echo "author : ${author}"
+		      echo "userid : ${userid}"
 	      }
       }
     }
