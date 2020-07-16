@@ -1,6 +1,6 @@
 @NonCPS
 def commitinformation(currentbuild){
-	def logset = build.changeSets
+	def logset = currentbuild.changeSets
 	echo ${logset}
 }
 
