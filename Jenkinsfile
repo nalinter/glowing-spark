@@ -6,6 +6,7 @@ def cancelbuilds(){
 	echo "${buildNumber}"
     def currentJob = Jenkins.instance.getItemByFullName(jobName)
 	echo "${currentJob}"
+	echo "hello"
 
 }
 
