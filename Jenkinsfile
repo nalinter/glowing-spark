@@ -2,6 +2,10 @@ pipeline{
   agent any
   stages{
     stage("sample"){
+	    environment{
+		    pr_number = "2456"
+		    sbx_report = "will send an sbx report"
+	    }
       steps{
 	 echo "sample"
       }
