@@ -1,32 +1,18 @@
-
-def cancelbuilds(){
-	def jobName = env.JOB_NAME
-	echo "${jobName}"
-    def buildNumber = env.BUILD_NUMBER.toInteger()
-	echo "${buildNumber}"
-    def currentJob = Jenkins.instance.getItemByFullName(jobName)
-	echo "${currentJob}"
-
-}
-
-
-
 pipeline{
   agent any
   stages{
     stage("sample"){
       steps{
-	      script{
-		      def json = currentBuild.getBuildCauses()
-		      def type = json.getClass()
-		      echo "${type}"
-	      	      def author = json.get(0)
-		      def sample = author.get(0)
-		     // def userid = json.get('userId')
-		      echo "author : ${author}"
-		     // echo "userid : ${userid}"
-	      }
+	 echo "sample"
       }
+      post{
+                success{
+                slackSend channel: 'atlas-sbx-deployment-approval', color: '#059e70',message: "GitHub-PR: *$pr_number* \n Package Deployment to SBX : *${currentBuild.currentResult}* \n Smoke Test(Report:$sbx_report) : *Success*", teamDomain: 'ibm-crmplatforms',tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
+                }
+                failure{
+                slackSend channel: 'atlas-sbx-deployment-approval', color: '#d33834',message: "GitHub-PR: *$pr_number* \n Package Deployment to SBX : *${currentBuild.currentResult}* \n Smoke Test(Report:$sbx_report) : *Failure*", teamDomain: 'ibm-crmplatforms',tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
+                }
+       }
     }
   }
 }
