@@ -21,7 +21,7 @@ PR_HASH=`git log -n 1 --pretty=format:%H`
 echo "PR_HASH=$PR_HASH"
 BASE_HASH=`git show $PR_HASH^1 |awk '{print $2}' |head -1`
 echo "BASE_HASH=$BASE_HASH"
-FEATURE_HASH=`git show $PR_HASH^^ |awk '{print $2}' |head -1`
+FEATURE_HASH=`git show $PR_HASH^2 |awk '{print $2}' |head -1`
 echo "FEATURE_HASH=$FEATURE_HASH"
 
 #echo "ghprbPullId=$ghprbPullId"  # 09/20/2016
