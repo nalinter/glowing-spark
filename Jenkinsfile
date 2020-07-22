@@ -8,7 +8,7 @@ pipeline{
 				echo "parallel-1"
 			}
 		}
-		stage('parallel-2){
+		stage('parallel-2'){
 		      steps{
 			      echo "parallel-2"
 		      }
