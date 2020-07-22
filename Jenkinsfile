@@ -5,7 +5,7 @@ pipeline{
 	parallel{
 		stage('parallel-1'){
 			steps{
-				echo "parallel-1"
+				sh 'sh codequality.sh'
 			}
 		}
 		stage('parallel-2'){
