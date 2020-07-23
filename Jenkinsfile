@@ -6,7 +6,7 @@ pipeline{
 		script{
 			def ans = env.GITHUB_PR_TITLE
 			echo "${ans}"
-			if(ans==~ 'CRMATLAS(-| )[0-9]+'){
+			if(ans==~ '/CRMATLAS(-| )[0-9]+/'){
 				echo "yes"
 			}
 		}
