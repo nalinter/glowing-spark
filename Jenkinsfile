@@ -18,8 +18,9 @@ pipeline{
 		   else{
 			   def name1 = title.substring(1,14)
 			   echo "${name1}"
-			   def package_name = "soc_" + "${name1}" + "_" + "${GITHUB_PR_NUMBER}" + "_" + "${env.BUILD_NUMBER}"
+			   def package_name = "${name1}" + "_" + "${GITHUB_PR_NUMBER}" + "_" + "${env.BUILD_NUMBER}"
 			   echo "${package_name}"
+			   sh "sh package.sh ${GITHUB_PR_NUMBER} ${package_name}"
 		   }
         
 	     }
