@@ -11,7 +11,7 @@ pipeline{
 		review = sh(returnStdout: true, script: 'curl  -s -H "Authorization: token ${token}" -X  GET "https://api.github.com/repos/ps-dev-ibm-cloud/Mango/pulls/2557"').trim()
 	}
 	def json = new groovy.json.JsonSlurperClassic().parseText(review)
-	echo "{json.title}"
+	echo "${json.title}"
 	     }
 	}
     }
