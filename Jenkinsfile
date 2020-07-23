@@ -4,9 +4,9 @@ pipeline{
     stage('parallel'){
 	steps{
 		script{
-			def m = "1234 abc" =~ /^(\d+)/
 			def ans = env.GITHUB_PR_TITLE
 			echo "${ans}"
+			def regex = (ans=~'/CRMATLAS(-| )(\d+)')
 		}
 	}
     }
