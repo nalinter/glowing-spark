@@ -5,7 +5,7 @@ pipeline{
 	steps{
 		script{
 			def m = "1234 abc" =~ /^(\d+)/
-			echo "${m}"
+			echo "${env.GITHUB_PR_LABELS}"
 		}
 	}
     }
