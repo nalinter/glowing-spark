@@ -8,7 +8,7 @@ pipeline{
 	steps{
 	   script{
 		    withCredentials([string(credentialsId: 'auth-token-ram', variable: 'token')]) {
-		review = sh(returnStdout: true, script: 'curl  -s -H "Authorization: token ${token}" -X  GET "https://api.github.com/repos/ps-dev-ibm-cloud/Mango/pulls/{GITHUB_PR_NUMBER}"').trim()
+		review = sh(returnStdout: true, script: 'curl  -s -H "Authorization: token ${token}" -X  GET "https://api.github.com/repos/ps-dev-ibm-cloud/Mango/pulls/${GITHUB_PR_NUMBER}"').trim()
 	}
 	def json = new groovy.json.JsonSlurperClassic().parseText(review)
 	echo "${json.title}"
