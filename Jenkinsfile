@@ -7,8 +7,8 @@ pipeline{
 			def ans = env.GITHUB_PR_TITLE
 			echo "${ans}"
 			def exp = (ans =~ /CRMATLAS(-| )[0-9]+/)
-			assert exp.matches()
-			assert exp.group()
+			def ans1 = exp.group(ans)
+			echo "${ans1}"
 		}
 	}
     }
