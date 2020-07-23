@@ -12,6 +12,10 @@ pipeline{
 	}
 	def json = new groovy.json.JsonSlurperClassic().parseText(review)
 	echo "${json.title}"
+        def title = json.title
+         def name = title.subString(1,14)
+         echo "${json.name}"
+        
 	     }
 	}
     }
