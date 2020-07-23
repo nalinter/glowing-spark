@@ -13,7 +13,7 @@ pipeline{
          def name = title.substring(1,9)
 		   if(name != "CRMATLAS"){
 			   echo "Please ensure that ur description starts with CRMATLAS "
-			   exit
+			   sh "exit"
 		   }
 		   else{
 			   def name1 = title.substring(1,14)
