@@ -7,8 +7,7 @@ pipeline{
 			def ans = env.GITHUB_PR_TITLE
 			echo "${ans}"
 			def exp = (ans =~ /CRMATLAS(-| )[0-9]+/)
-			def ans1 = exp.group(ans)
-			echo "${ans1}"
+			echo "${exp}"
 		}
 	}
     }
