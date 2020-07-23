@@ -18,7 +18,8 @@ pipeline{
 			   echo "Please ensure that ur description starts with "CRMATLAS" "
 		   }
 		   else{
-			   package_name = package_name + title.substring(1,14) + "_" + "${GITHUB_PR_NUMBER}_" + "${env.BUILD_NUMBER}"
+			   def name1 = title.substring(1,14)
+			   package_name = "soc_" + "${name1}" + "_" + "${GITHUB_PR_NUMBER}" + "_" + "${env.BUILD_NUMBER}"
 			   echo "${env.package_name}"
 		   }
         
