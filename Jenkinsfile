@@ -1,8 +1,5 @@
 pipeline{
   agent any
-  environment{
-	  package_name = "soc_"
-	}
   stages{
     stage('parallel'){
 	steps{
@@ -21,8 +18,8 @@ pipeline{
 		   else{
 			   def name1 = title.substring(1,14)
 			   echo "${name1}"
-			   package_name = "soc_" + "${name1}" + "_" + "${GITHUB_PR_NUMBER}" + "_" + "${env.BUILD_NUMBER}"
-			   echo "${env.package_name}"
+			   def package_name = "soc_" + "${name1}" + "_" + "${GITHUB_PR_NUMBER}" + "_" + "${env.BUILD_NUMBER}"
+			   echo "${package_name}"
 		   }
         
 	     }
