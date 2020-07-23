@@ -6,7 +6,7 @@ pipeline{
 		script{
 			def ans = env.GITHUB_PR_TITLE
 			echo "${ans}"
-			def exp = (ans =~ /CRMATLAS(-| )[0-9]+/)
+			def exp = (ans ==~ /CRMATLAS(-| )[0-9]+/)
 			echo "${exp}"
 		}
 	}
