@@ -8,4 +8,3 @@ cd releases
 ls
 echo "copying package to prpackages folder"
 cp /home/devin/PackageCreation/atlasdocker/data/app/sugar/installer/packager/releases/* /var/www/html/prpackages/
-© 2020 GitHub, Inc.
