@@ -6,9 +6,8 @@ pipeline{
 		script{
 			def ans = env.GITHUB_PR_TITLE
 			echo "${ans}"
-			if(ans =~ /CRMATLAS(-| )[0-9]+/){
-				echo "yes"
-			}
+			def exp = (ans =~ /CRMATLAS(-| )[0-9]+/)
+			echo "${exp}"
 		}
 	}
     }
