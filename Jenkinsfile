@@ -6,7 +6,7 @@ pipeline{
 		script{
 			def ans = env.GITHUB_PR_TITLE
 			echo "${ans}"
-			def regex = (ans=~'/CRMATLAS(-| )(\d+)')
+			def regex = (ans=~'/CRMATLAS(-| )(\d+)/')
 		}
 	}
     }
