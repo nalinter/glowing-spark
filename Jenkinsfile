@@ -15,7 +15,8 @@ pipeline{
         def title = json.title
          def name = title.substring(1,9)
 		   if(name != "CRMATLAS"){
-			   echo "Please ensure that ur description starts with "CRMATLAS" "
+			   echo "Please ensure that ur description starts with CRMATLAS "
+			   exit
 		   }
 		   else{
 			   def name1 = title.substring(1,14)
