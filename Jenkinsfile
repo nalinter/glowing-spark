@@ -14,7 +14,7 @@ pipeline{
 	echo "${json.title}"
         def title = json.title
          def name = title.substring(1,14)
-         echo "${json.name}"
+         echo "${name}"
         
 	     }
 	}
