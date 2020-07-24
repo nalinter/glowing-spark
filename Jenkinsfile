@@ -8,7 +8,7 @@ pipeline{
 			if(ans =~ /CRMATLAS(-| )[0-9]+/)
 			{
 				def res = ans.findAll(~/CRMATLAS(-| )[0-9]+/)
-				echo "${res}"
+				echo "${res[0]}"
 			}
 			else{
 				echo "description doesn't have JIRA number Please change add JIRA number into description"
