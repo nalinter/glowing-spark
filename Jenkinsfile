@@ -1,33 +1,17 @@
 
-def cancelbuilds(){
-	def jobName = env.JOB_NAME
-	echo "${jobName}"
-    def buildNumber = env.BUILD_NUMBER.toInteger()
-	echo "${buildNumber}"
-    def currentJob = Jenkins.instance.getItemByFullName(jobName)
-	echo "${currentJob}"
-	echo "hello"
-
-}
-
-
-
 pipeline{
   agent any
   stages{
-    stage("sample"){
-      steps{
-	      script{
-		      def json = currentBuild.getBuildCauses()
-		      def type = json.getClass()
-		      echo "${type}"
-	      	      def author = json.get(0)
-		      def sample = author.get(0)
-		     // def userid = json.get('userId')
-		      echo "author : ${author}"
-		     // echo "userid : ${userid}"
-	      }
-      }
+    stage('parallel'){
+	steps{
+		echo "hello"
+	}
+	    post{
+		    success{
+			    		githubPRAddLabels errorHandler: statusOnPublisherError('FAILURE'), labelProperty: labels('AtlasCI'), statusVerifier: allowRunOnStatus('SUCCESS')
+
+		    }
+	    }
     }
   }
 }
