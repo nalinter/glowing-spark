@@ -8,7 +8,8 @@ pipeline{
 			if(ans =~ /CRMATLAS(-| )[0-9]+/)
 			{
 				def res = ans.findAll(~/CRMATLAS(-| )[0-9]+/)
-				echo "${res[0]}"
+				package_name = res[0] + "_" + "${GITHUB_PR_NUMBER}" + "_" + "${BUILD_NUMBER}"
+				echo "${package_name}"
 			}
 			else{
 				echo "description doesn't have JIRA number Please change add JIRA number into description"
