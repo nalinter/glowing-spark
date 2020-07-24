@@ -8,9 +8,11 @@ pipeline{
 			if(ans =~ /CRMATLAS(-| )[0-9]+/)
 			{
 				echo "Description contains JIRA number"
+				
 			}
 			else{
-				echo "description doesn't have JIRA number Please change ur description"
+				echo "description doesn't have JIRA number Please change add JIRA number into description"
+				currentBuild.result = "FAILURE"
 			}
 		}
 	}
