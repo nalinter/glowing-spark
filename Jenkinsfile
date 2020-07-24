@@ -7,9 +7,8 @@ pipeline{
 			def ans = env.GITHUB_PR_TITLE
 			if(ans =~ /CRMATLAS(-| )[0-9]+/)
 			{
-				def pattern = ~/CRMATLAS(-| )[0-9]+/
-				def pattern_match = pattern.matcher(ans).matches()
-				echo "${pattern_match}"
+				def res = ans.findAll(~ /CRMATLAS(-| )[0-9]+/)
+				echo "${res}"
 			}
 			else{
 				echo "description doesn't have JIRA number Please change add JIRA number into description"
