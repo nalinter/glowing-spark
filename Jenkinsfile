@@ -7,7 +7,7 @@ pipeline{
 			def ans = env.GITHUB_PR_TITLE
 			if(ans =~ /CRMATLAS(-| )[0-9]+/)
 			{
-				def res = ans.findAll(~ /CRMATLAS(-| )[0-9]+/)
+				def res = ans.findAll(~/CRMATLAS(-| )[0-9]+/)
 				echo "${res}"
 			}
 			else{
