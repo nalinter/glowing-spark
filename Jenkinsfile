@@ -18,7 +18,7 @@ pipeline{
                     else{
                         echo "${GITHUB_PR_NUMBER}: doesn't contain the JIRA Number in the description, add JIRA Number into the description"
                         currentBuild.result = "FAILURE"
-			    sh 'exit'
+			    return
                     }
                 }
             }
