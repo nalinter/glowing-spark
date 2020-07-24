@@ -5,9 +5,13 @@ pipeline{
 	steps{
 		script{
 			def ans = env.GITHUB_PR_TITLE
-			echo "${ans}"
-			def exp = (ans =~ /CRMATLAS(-| )[0-9]+/)
-			echo "${exp}"
+			if(ans =~ /CRMATLAS(-| )[0-9]+/)
+			{
+				echo "Description contains JIRA number"
+			}
+			else{
+				echo "description doesn't have JIRA number Please change ur description"
+			}
 		}
 	}
     }
