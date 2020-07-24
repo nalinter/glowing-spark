@@ -21,6 +21,7 @@ pipeline{
                     }
                 }
             }
+    }
 	    stage('parallel2'){
 		    steps{
 			    echo "${package_name}"
