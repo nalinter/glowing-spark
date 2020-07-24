@@ -3,8 +3,14 @@ pipeline{
   stages{
     stage('parallel'){
 	steps{
-		githubPRAddLabels errorHandler: statusOnPublisherError('FAILURE'), labelProperty: labels('AtlasCI'), statusVerifier: allowRunOnStatus('SUCCESS')
+		echo "hello"
 	}
+	    post{
+		    success{
+			    		githubPRAddLabels errorHandler: statusOnPublisherError('FAILURE'), labelProperty: labels('AtlasCI'), statusVerifier: allowRunOnStatus('SUCCESS')
+
+		    }
+	    }
     }
   }
 }
