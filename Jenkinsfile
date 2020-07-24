@@ -7,7 +7,8 @@ pipeline{
 			def ans = env.GITHUB_PR_TITLE
 			if(ans =~ /CRMATLAS(-| )[0-9]+/)
 			{
-				def res = ans.findAll(~/CRMATLAS(-| )[0-9]+/).replaceAll(' ','-')
+				def res = ans.findAll(~/CRMATLAS(-| )[0-9]+/)
+				res[0].charAt(8)==' '?res[0].charAt(8)='-':
 				package_name = res[0] + "_" + "${GITHUB_PR_NUMBER}" + "_" + "${BUILD_NUMBER}"
 				echo "${package_name}"
 			}
