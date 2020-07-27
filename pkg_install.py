@@ -1,6 +1,7 @@
 import sys
 import os
 import json
+import requests
 
 def get_access_token(env_url, env_payload):
 	oauth_url = env_url + "rest/v11_8/oauth2/token"
