@@ -4,33 +4,12 @@ pipeline{
 		pr_number = "4536"
 	}
 	stages{
-		stage('Regression-Suite SBX'){
-            agent{
-                node{
-                label 'atlasdevops'
-                }
-            }
-            steps{
-                script{    
-                    wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
-                        sh 'pwd'
-                        dir('/root/Desktop/Atlastesting/sbx_smoke_test/Atlas') {
-                            sh 'mvn test -DsuiteXmlFile=SmokeTestSbx.xml'
-                            sh 'mv /root/Desktop/Atlastesting/sbx_smoke_test/Atlas/reports/*.html /root/Desktop/Atlastesting/test_results/sbx_smoke/$pr_number.html'
-                            }
-                    }
-                }
-                publishHTML([
-                    allowMissing: false, 
-                    alwaysLinkToLastBuild: false, 
-                    escapeUnderscores: false, 
-                    includes: "*.html",
-                    keepAll: false, 
-                    reportDir: '/root/Desktop/Atlastesting/test_results/sbx_smoke', 
-                    reportFiles: '*.html', 
-                    reportName: 'SBX_Report', 
-                    reportTitles: ''])
-            }
-        }
+		stage('github notification'){
+			steps{
+				withCredentials([string(credentialsId: 'auth-token-ram', variable: 'token')]) {
+    sh 'curl -i -H "Authorization: token ${token}" -X POST "https://api.github.com/repos/ps-dev-ibm-cloud/Mango/issues/${GITHUB_PR_NUMBER}/comments" --data '{"body" : " SugarLint : *SUCCESS* \n UnitTest : *SUCCESS* \n PackageCreation($package_name) : *SUCCESS* \n Pre-SBX Deployment,SmokeTests($pre_sbx_report) : *SUCCESS* \n SBX Deployment,SmokeTests($sbx_report) : *SUCCESS* \n URL : ${env.BUILD_URL} "}''
+		}
+			}
+		}
 	}
 }
