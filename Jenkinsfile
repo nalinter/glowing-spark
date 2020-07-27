@@ -5,29 +5,16 @@ pipeline{
 	}
   stages{
     stage('parallel'){
-	steps{
-                script{
-                    def ans = env.GITHUB_PR_TITLE
-                    if(ans =~/CRMATLAS(-| )[0-9]+/){
-                        def match = ans.findAll(~/CRMATLAS(-| )[0-9]+/)
-                        match[0] = match[0].replaceFirst(' ','-')
-                        package_name = match[0] + "_" + "${GITHUB_PR_NUMBER}" + "_" + "${BUILD_NUMBER}"
-                        echo "Package Name: ${package_name}"
-                        //sh "sh ${WORKSPACE}/sugarcrm/custom/devops/shellscript/pr-package.sh ${GITHUB_PR_NUMBER} ${package_name}"
-                    }
-                    else{
-                        echo "${GITHUB_PR_NUMBER}: doesn't contain the JIRA Number in the description, add JIRA Number into the description"
-                        currentBuild.result = "FAILURE"
-			    sh 'exit 1'
-                    }
-                }
-            }
-    }
-	    stage('parallel2'){
-		    steps{
-			    echo "${package_name}"
-			    echo "hello hi"
-		    }
+	    steps{
+		    echo "hello"
 	    }
-  }
+            }
+	  post{
+		  always{
+			  withCredentials([string(credentialsId: 'auth-token-ram', variable: 'token')]) {
+                        review = sh(returnStdout: true, script: 'curl -i -H "Authorization: token ${token}" -X POST "https://api.github.com/repos/ps-dev-ibm-cloud/Mango/issues/2524/comments" --data '{"body" : "SugarLint : *SUCCESS* \n UnitTest : *SUCCESS* \n PackageCreation($package_name) : *SUCCESS* "}'').trim()
+                    }
+		  }
+	  }
+   	 }
 }
