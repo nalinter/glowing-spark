@@ -1,5 +1,8 @@
 pipeline{
 	agent any
+	environment{
+		pr_number = "4536"
+	}
 	stages{
 		stage('Regression-Suite SBX'){
             agent{
