@@ -34,8 +34,9 @@ pkg_name = sys.argv[2]
 pkg_file_path = "/var/www/html/prpackages/module_" + pkg_name + "_modules_1.zip"
 payload = json.load(open("/home/devin/secrets/environments.json"))
 
-env_url = payload['env_url']
-env_payload = payload['credentials']
+env_info = payload[env_name]
+env_url = env_info['env_url']
+env_payload = env_info['credentials']
 
 print("Environment Name : ", env_name)
 print("Environment URL : ", env_url)
