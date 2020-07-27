@@ -1,21 +1,33 @@
 pipeline{
-  agent any
-  environment{
-	  package_name = "never"
+	agent any
+	stages{
+		stage('Regression-Suite SBX'){
+            agent{
+                node{
+                label 'atlasdevops'
+                }
+            }
+            steps{
+                script{    
+                    wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+                        sh 'pwd'
+                        dir('/root/Desktop/Atlastesting/sbx_smoke_test/Atlas') {
+                            sh 'mvn test -DsuiteXmlFile=SmokeTestSbx.xml'
+                            sh 'mv /root/Desktop/Atlastesting/sbx_smoke_test/Atlas/reports/*.html /root/Desktop/Atlastesting/test_results/sbx_smoke/$pr_number.html'
+                            }
+                    }
+                }
+                publishHTML([
+                    allowMissing: false, 
+                    alwaysLinkToLastBuild: false, 
+                    escapeUnderscores: false, 
+                    includes: "*.html",
+                    keepAll: false, 
+                    reportDir: '/root/Desktop/Atlastesting/test_results/sbx_smoke', 
+                    reportFiles: '*.html', 
+                    reportName: 'SBX_Report', 
+                    reportTitles: ''])
+            }
+        }
 	}
-  	stages{
-    	stage('parallel'){
-	    	steps{
-		    	echo "hello"
-	    	}
-	  		post{
-		  		always{
-			  		withCredentials([string(credentialsId: 'auth-token-ram', variable: 'token')]) {
-                       	sh(returnStdout: true, script: 'curl -i -H "Authorization: token ${token}" -X POST "https://api.github.com/repos/ps-dev-ibm-cloud/Mango/issues/2524/comments" --data "{"body" : "'SugarLint' : *'SUCCESS'* \n 'UnitTest' : *'SUCCESS'* \n 'PackageCreation($package_name)' : *'SUCCESS'* "}"')
-                	}
-		  		}
-	    	}
-
-	    }	
-   	}
 }
