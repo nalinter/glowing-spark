@@ -4,13 +4,13 @@ import json
 import requests
 
 def get_access_token(env_url, env_payload):
-	oauth_url = env_url + "rest/v11_8/oauth2/token"
+	oauth_url = env_url + "/rest/v11_8/oauth2/token"
 	oauth_body = json.dumps(env_payload)
 	access_token_response = requests.post(oauth_url, data=oauth_body)
 	return access_token_response
 
 def upload_package(env_url, oauth_token, pkg_path):
-	oauth_url = env_url + "rest/v11_8/Administration/packages"
+	oauth_url = env_url + "/rest/v11_8/Administration/packages"
 	files = [
       ('upgrade_zip', open(pkg_path,'rb'))
     ]
@@ -21,7 +21,7 @@ def upload_package(env_url, oauth_token, pkg_path):
 	return upload_pkg_response
 
 def install_package(env_url, oauth_token, file_hash):
-	oauth_url = env_url + "rest/v11_8/Administration/packages/" + file_hash + "/install/"
+	oauth_url = env_url + "/rest/v11_8/Administration/packages/" + file_hash + "/install/"
 	headers = {
 	'OAuth-Token': oauth_token
 	}
