@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage('package_test'){
 			steps{
-				sh 'sh pkg_install.py presbx 2559'
+				sh 'python3 pkg_install.py presbx 2559'
 			}
 		}
 	}
