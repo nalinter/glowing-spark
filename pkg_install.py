@@ -7,7 +7,7 @@ def get_access_token(env_url, env_payload):
 	oauth_url = env_url + "rest/v11_8/oauth2/token"
 	oauth_body = json.dumps(env_payload)
 	access_token_response = requests.post(oauth_url, data=oauth_body)
-	return access_token_response.json()
+	return access_token_response
 
 def upload_package(env_url, oauth_token, pkg_path):
 	oauth_url = env_url + "rest/v11_8/Administration/packages"
@@ -18,7 +18,7 @@ def upload_package(env_url, oauth_token, pkg_path):
 	'OAuth-Token': oauth_token
 	}
 	upload_pkg_response = requests.post(oauth_url, headers= headers, files = files)
-	return upload_pkg_response.json()
+	return upload_pkg_response
 
 def install_package(env_url, oauth_token, file_hash):
 	oauth_url = env_url + "rest/v11_8/Administration/packages/" + file_hash + "/install/"
@@ -26,7 +26,7 @@ def install_package(env_url, oauth_token, file_hash):
 	'OAuth-Token': oauth_token
 	}
 	install_pkg_response = requests.get(oauth_url, headers =headers)
-	return install_pkg_response.json()
+	return install_pkg_response
 
 env_name = sys.argv[1]
 pkg_name = sys.argv[2]
@@ -47,20 +47,22 @@ print("Package Name : ", pkg_name)
 access_response = get_access_token(env_url, env_payload)
 if access_response.status_code == 200:
 	print("Success, Access Token Generated, ", access_response.status_code)
-	access_token = access_response['access_token']
+	access_json = access_response.json()
+	access_token = access_json['access_token']
 else:
 	print("Access Token Generation failure with status code, ",access_response.status_code)
-	print("Reason for failure: ", access_response)
+	print("Reason for failure: ", access_response.json())
 	exit()
 
 #Uploading Package
 upload_response = upload_package(env_url, access_token, pkg_file_path)
 if upload_response.status_code == 200:
 	print("Success, Package has been Uploaded, ", upload_response.status_code)
-	file_hash = upload_response['file_install']
+	upload_json = upload_response.json()
+	file_hash = upload_json['file_install']
 else:
 	print("Uploading Package failure with status code, ",upload_response.status_code)
-	print("Reason for failure: ", upload_response)
+	print("Reason for failure: ", upload_response.json())
 	exit()
 
 #Installing Package
@@ -69,4 +71,4 @@ if install_response.status_code == 200:
 	print("Success, Package has been Installed, ", install_response.status_code)
 else:
 	print("Installing Package failure due to status code, ", install_response.status_code)
-	print("Reason for failure: ", install_response)
+	print("Reason for failure: ", install_response.json())
