@@ -10,7 +10,7 @@ pipeline{
 	stages{
 		stage('package_test'){
 			steps{
-				slackNotification("SUCCESS","Sample testing message \n ${env.BUILD_URL}","atlas_devops_internal")
+				slackNotification("SUCCESS","Sample testing message please ignore\n ${env.BUILD_URL}","atlas_devops_internal,atlas-devops-2020")
 			}
 		}
 	}
