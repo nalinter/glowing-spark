@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage('package_test'){
 			steps{
-				githubPRAddLabels labelProperty: labels('hello'), statusVerifier: buildStatus('SUCCESS'), errorHandler: buildStatus('FAILURE')
+		githubPRAddLabels errorHandler: statusOnPublisherError('FAILURE'), labelProperty: labels('devops'), statusVerifier: allowRunOnStatus('SUCCESS')
 			}
 		}
 	}
