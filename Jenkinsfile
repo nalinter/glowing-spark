@@ -1,9 +1,16 @@
+def slackNotification(String buildResult,Sring message) {
+    if ( buildResult == "SUCCESS" ) {
+	    slackSend channel: '#WRLDBHDCZ', color: '#059e70', message: "${message}", teamDomain: 'ibm-crmplatforms', tokenCredentialId: '5315744d-e8dc-4d99-8dd2-0f2c7d07e451'
+       // setGitHubPullRequestStatus state: 'SUCCESS', context: 'AtlasCI-Pipeline', message: "Refer Jenkins build #${env.BUILD_NUMBER} "
+        
+    }
+    
 pipeline{
 	agent any
 	stages{
 		stage('package_test'){
 			steps{
-				sh 'python3 pkg_install.py presbx 2559'
+				slackNotification("SUCCESS","hello")
 			}
 		}
 	}
