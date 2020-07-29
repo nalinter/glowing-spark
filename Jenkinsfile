@@ -10,7 +10,7 @@ pipeline{
 	stages{
 		stage('package_test'){
 			steps{
-				slackNotification("SUCCESS","hello")
+				slackNotification("SUCCESS","Sample testing message \n ${env.BUILD_URL}")
 			}
 		}
 	}
