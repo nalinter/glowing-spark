@@ -180,7 +180,7 @@ pipeline{
             }
             post{
                 failure{
-                    slackNotification(currentBuild.currentResult,"atlas_devops_internal",message: "PR : $github_url/$pr_number \n SBX Deployment : *${currentBuild.currentResult}*")
+                    slackNotification(currentBuild.currentResult,"atlas_devops_internal","PR : $github_url/$pr_number \n SBX Deployment : *${currentBuild.currentResult}*")
                 }
             }
         }
