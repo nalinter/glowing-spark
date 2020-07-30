@@ -37,8 +37,10 @@ pipeline{
         when { not {  environment name:'SKIP_SUGARLINT', value: 'true' }}
             steps{
            // sh "sh ${WORKSPACE}/sugarcrm/custom/devops/shellscript/codequality.sh"
+                script{
                 echo "sugarlint"
                 currentBuild.result = "FAILURE"
+                }
             }
             post{
                 failure{
@@ -50,8 +52,10 @@ pipeline{
         when { not {  environment name:'SKIP_UNITTEST', value: 'true' }}
             steps{
             //    sh "sh ${WORKSPACE}/sugarcrm/custom/devops/shellscript/unit-test.sh"
+                script{
                 echo "unit test"
                 currentBuild.result = "FAILURE"
+                }
             }
             post{
                 failure{
@@ -169,8 +173,10 @@ pipeline{
             }
             steps{
                  // sh "sh ${WORKSPACE}/sugarcrm/custom/devops/shellscript/package_deployment.sh $environment_name ${package_name}"
+                script{
                 echo "sbx"
                 currentBuild.result = "FAILURE"
+                }
             }
             post{
                 failure{
@@ -210,8 +216,10 @@ pipeline{
                     reportFiles: '*.html', 
                     reportName: 'SBX_Report', 
                     reportTitles: ''])*/
+                script{
                 echo "regression suite sbx"
                 currentBuild.result = "FAILURE"
+                }
                 
             }
             post{
