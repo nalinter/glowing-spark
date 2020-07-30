@@ -39,7 +39,7 @@ pipeline{
            // sh "sh ${WORKSPACE}/sugarcrm/custom/devops/shellscript/codequality.sh"
                 script{
                 echo "sugarlint"
-                currentBuild.result = "FAILURE"
+               // currentBuild.result = "FAILURE"
                 }
             }
             post{
@@ -54,7 +54,7 @@ pipeline{
             //    sh "sh ${WORKSPACE}/sugarcrm/custom/devops/shellscript/unit-test.sh"
                 script{
                 echo "unit test"
-                currentBuild.result = "FAILURE"
+              //  currentBuild.result = "FAILURE"
                 }
             }
             post{
