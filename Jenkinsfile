@@ -18,14 +18,6 @@ pipeline{
     options {
         timeout(time: 30, unit: 'MINUTES') 
     }
-    environment{
-            pr_number = "${GITHUB_PR_NUMBER}"   
-           github_url = "https://github.com/ps-dev-ibm-cloud/Mango/pull"
-           pre_sbx_report = "http://ddywdcdevin01.sl.bluecloud.ibm.com:8080/job/AtlasCI-Pipeline/PRE-SBX_Report/"
-           package_name = "module_" + "${GITHUB_PR_NUMBER}" + "_modules_1.zip"  
-            envi_url = "http://soc.rtp.raleigh.ibm.com/atlas"  
-            sbx_report = "http://ddywdcdevin01.sl.bluecloud.ibm.com:8080/job/AtlasCI-Pipeline/SBX_Report/"
-    }
     stages{
         stage('Source Code Checkout'){
             steps{
