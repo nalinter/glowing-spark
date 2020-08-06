@@ -21,7 +21,7 @@ pipeline{
     stages{
         stage('Source Code Checkout'){
             steps{
-               echo "Github PR Number : ${GITHUB_PR_NUMBER}"
+              // echo "Github PR Number : ${GITHUB_PR_NUMBER}"
                slackNotification(currentBuild.currentResult,"#atlas_devops_internal","Hello Jenkins from bangalore :joy (test message)")
 
                //checkout([$class: 'GitSCM', branches: [[name: 'origin-pull/pull/${GITHUB_PR_NUMBER}/merge']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: false, recursiveSubmodules: true, reference: '', trackingSubmodules: false]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '7e47757b-cf76-4d92-8d06-2fcdbd82476f', name: 'origin', refspec: '+refs/pull/${GITHUB_PR_NUMBER}/merge:refs/remotes/origin-pull/pull/${GITHUB_PR_NUMBER}/merge', url: 'git@github.com:ps-dev-ibm-cloud/Mango.git']]])               
