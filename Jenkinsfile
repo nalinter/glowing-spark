@@ -3,7 +3,7 @@ pipeline{
 		stages{
 			stage("Merge & Label Check"){
 				steps{
-				ech0 "hello"
+				echo "hello"
 				}
 			}
 		}
