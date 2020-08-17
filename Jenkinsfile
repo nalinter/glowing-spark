@@ -7,7 +7,7 @@ pipeline{
 				
 						def foundFiles = sh(script: "find /var/www/html/prpackages/ -name module_CRMATLAS-8845'\'*", returnStdout: true).split()
 						echo "${foundFiles}"
-						def filenames = foundFiles[0]
+						def filenames = foundFiles.sort()
 						echo "${filenames}"
 					}
 				}
