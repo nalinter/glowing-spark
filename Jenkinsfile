@@ -6,7 +6,7 @@ pipeline{
 					script{
 						if(env.GITHUB_PR_LABELS && env.GITHUB_PR_LABELS.contains('deploytosbx') && env.GITHUB_PR_LABELS.contains('deploytodev') && env.GITHUB_PR_STATE=="CLOSED"){
 							def title = env.GITHUB_PR_TITLE
-							def match = ans.findAll(~/(CRMATLAS)(-| )[0-9]+/)
+							def match = title.findAll(~/(CRMATLAS)(-| )[0-9]+/)
                         				match[0] = match[0].replaceFirst(' ','-')
 							def package_name = "module_" + match[0] + "_" + "2608" + "_"
 							echo "${package_name}"
