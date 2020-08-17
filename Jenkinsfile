@@ -4,7 +4,9 @@ pipeline{
 			stage("Merge & Label Check"){
 				steps{
 					script{
-						def foundFiles = sh(script: "find . -name /var/www/html/prpackages/module_CRMATLAS-8845'\'*", returnStdout: true).split()
+						sh 'cd /var/www/html/prpackages/'
+						sh 'pwd'
+						def foundFiles = sh(script: "find . -name module_CRMATLAS-8845'\'*", returnStdout: true).split()
 						echo "${foundFiles}"
 						def filenames = foundFiles.findAll(~/(CRMATLAS-)([0-9]+_)([0-9]+_)[0-9]+/)
 						echo "${filenames}"
