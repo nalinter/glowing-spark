@@ -4,7 +4,7 @@ pipeline{
 			stage("Get Latest Package Uploaded to SBX"){
 				steps{
 					script{
-						def val = "module_CRMATLAS-5008'\'*"
+						def val = "CRMATLAS-5008'\'*"
 						def foundFiles = sh(script: "find /var/www/html/prpackages/ -name ${val}", returnStdout: true).split()
 						echo "${foundFiles}"
 						def filenames = foundFiles.sort()
