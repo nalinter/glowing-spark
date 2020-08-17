@@ -1,11 +1,11 @@
 pipeline{
 	agent any
 		stages{
-			stage("Merge & Label Check"){
+			stage("Get Latest Package Uploaded to SBX"){
 				steps{
 					script{
-				
-						def foundFiles = sh(script: "find /var/www/html/prpackages/ -name module_CRMATLAS-5008'\'*", returnStdout: true).split()
+						def val = "module_CRMATLAS-5008'\'*"
+						def foundFiles = sh(script: "find /var/www/html/prpackages/ -name ${val}", returnStdout: true).split()
 						echo "${foundFiles}"
 						def filenames = foundFiles.sort()
 						filenames = filenames.reverse(true)
