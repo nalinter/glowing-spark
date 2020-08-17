@@ -10,7 +10,7 @@ pipeline{
 						def filenames = foundFiles.sort()
 						filenames = filenames.reverse(true)
 						echo "${filenames}"
-						def matchvalue = filenames[0].findAll(~/(CRMATLAS-)([0-9]+_)+/)
+						def matchvalue = filenames[0].findAll(~/(CRMATLAS-)([0-9]+_)([0-9]+_)([0-9]+)/)
 						echo "${matchvalue}"
 					}
 				}
