@@ -6,7 +6,7 @@ pipeline{
 					script{
 						def foundFiles = sh(script: "find . -name /var/www/html/prpackages/module_CRMATLAS-8845'\'*", returnStdout: true).split()
 						echo "${foundFiles}"
-						def filenames = foundFiles.findAll(~/(CRMATLAS|ATLASINTRN)(-| )([0-9]+|_)+/)
+						def filenames = foundFiles.findAll(~/(CRMATLAS-)([0-9]+_)([0-9]+_)[0-9]+/)
 						echo "${filenames}"
 					}
 				}
