@@ -1,5 +1,8 @@
 pipeline{
 	agent any
+	environment{
+		def latestpackage = "hello"
+	}
 		stages{
 			stage("Merge & Label Check"){
 				steps{
