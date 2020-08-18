@@ -17,7 +17,7 @@ pipeline{
 							echo "${filenames}"
 							def latestpackage = filenames[0].findAll(~/(CRMATLAS-)([0-9]+_)([0-9]+_)([0-9]+)/)
 							echo "${latestpackage}"
-							sh "sh ${WORKSPACE}/shellscript/package_deployment.sh  'presbx' ${latestpackage} "
+							sh "sh ${WORKSPACE}/shellscript/package_deployment.sh  'presbx' ${latestpackage[0]} "
 						}
 						else{
 							echo "${env.GITHUB_PR_STATE}"
