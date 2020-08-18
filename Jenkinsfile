@@ -17,7 +17,7 @@ pipeline{
 							echo "${filenames}"
 							def latestpackage = filenames[0].findAll(~/(CRMATLAS-)([0-9]+_)([0-9]+_)([0-9]+)/)
 							echo "${latestpackage}"
-							//sh "sh /var/lib/jenkins/workspace/AtlasCI-Pipeline/sugarcrm/custom/devops/shellscript/package_deployment.sh 'presbx' ${latestpackage}"
+							sh "sh /var/lib/jenkins/workspace/AtlasCI-Pipeline/sugarcrm/custom/devops/shellscript/package_deployment.sh 'presbx' ${latestpackage}"
 						}
 						else{
 							echo "${env.GITHUB_PR_STATE}"
