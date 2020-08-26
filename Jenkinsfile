@@ -1,6 +1,6 @@
 pipeline{
 	agent any
-		evnironment{
+		environment{
 			def latestpackage = "${GITHUB_PR_NUMBER}"
 		}	
 		stages{
